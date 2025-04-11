@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mushroom Classification Info</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+  
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+  
+    header {
+      background-color: #4caf50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+  
+    .section {
+      padding: 10px 20px; /* Reduced vertical padding */
+      text-align: left;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+  
+    .section h2,
+    .section h3 {
+      color: #2e2e2e;
+      margin-top: 10px;
+      margin-bottom: 10px; /* Less spacing before/after headings */
+    }
+  
+    .section p {
+      color: #555;
+      line-height: 1.6;
+      font-size: 1.05em;
+      margin-bottom: 16px; /* Slightly reduced */
+    }
+  
+    .section ul {
+      margin: 10px 0 20px 0; /* Less top margin */
+      padding-left: 40px;
+      color: #555;
+      font-size: 1.05em;
+    }
+  
+    .section ul li {
+      margin-bottom: 8px;
+    }
+  
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px 10px; /* Reduced vertical padding */
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+    .card {
+      width: 250px;
+      height: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      position: relative;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      background-color: white;
+    }
+  
+    .card:hover {
+      transform: scale(1.05);
+    }
+  
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  
+    .card-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      color: white;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      padding: 15px;
+      overflow-y: auto;
+    }
+  
+    .card:hover .card-info {
+      opacity: 1;
+    }
+  
+    .card-info h3 {
+      margin-top: 0;
+      font-size: 1.3em;
+    }
+  
+    .card-info p {
+      font-size: 1em;
+    }
+  
+    .button-wrapper {
+      text-align: center;
+      margin-top: 20px;
+    }
+  
+    .button-wrapper button {
+      background-color: #007bff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #e0e0e0;
+      margin-top: 30px;
+    }
+  </style>
+  
+</head>
+
+<body>
+  <header>
+    <h1>Mushroom Classification Guide 🍄</h1>
+  </header>
+
+  <div class="section">
+    <h2>What is a Mushroom?</h2>
+    <p>
+      A mushroom is the conspicuous umbrella-shaped fruiting body (sporophore) of certain fungi, typically of the order Agaricales in the phylum Basidiomycota but also of some other groups. Popularly, the term mushroom is used to identify the edible sporophores; the term toadstool is often reserved for inedible or poisonous sporophores. There is, however, no scientific distinction between the two names, and either can be properly applied to any fleshy fungus fruiting structure.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>How Do We Classify Mushrooms?</h2>
+    <p>
+      Mushrooms can be classified as either <strong>edible</strong> or <strong>poisonous</strong> based on features like cap shape, gill type, odor, and habitat. Our machine learning model helps predict mushroom safety using these visible characteristics.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Types of Mushrooms</h2>
+  </div>
+
+  <div class="card-container">
+    <div class="card">
+      <img src="{{ url_for('static', filename='amanita.jpg') }}" alt="Amanita" />
+      <div class="card-info">
+        <h3>Amanita</h3>
+        <p>Highly poisonous. Red cap with white spots. Avoid consumption!</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='chanterelle.jpg') }}" alt="Chanterelle" />
+      <div class="card-info">
+        <h3>Chanterelle</h3>
+        <p>Edible and delicious. Yellow-orange. Used in gourmet cooking.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='deathcap.jpg') }}" alt="Death Cap" />
+      <div class="card-info">
+        <h3>Death Cap</h3>
+        <p>One of the deadliest mushrooms. Pale green. Extremely toxic.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='morel.jpg') }}" alt="Morel" />
+      <div class="card-info">
+        <h3>Morel</h3>
+        <p>Edible with a honeycomb texture. Prized by chefs worldwide.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='fly_agaric.jpg') }}" alt="Fly Agaric" />
+      <div class="card-info">
+        <h3>Fly Agaric</h3>
+        <p>Bright red with white dots. Poisonous and hallucinogenic.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='oyster.jpg') }}" alt="Oyster Mushroom" />
+      <div class="card-info">
+        <h3>Oyster Mushroom</h3>
+        <p>Edible and popular in cooking. Mild flavor and soft texture.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="button-wrapper">
+    <a href="{{ url_for('form_page') }}">
+      <button type="button">
+        Go to Mushroom Prediction Form →
+      </button>
+    </a>
+  </div>
+
+  <div class="section">
+    <div class="description-content">
+      <h2>The Fascinating World of Mushroom Farming and Edible Varieties</h2>
+      <p>
+        Mushrooms have captivated human interest for centuries, not only for
+        their unique flavors, but also for their fascinating cultivation and
+        health benefits.
+      </p>
+
+      <h3>A Journey Through Time</h3>
+      <p>
+        Mushroom farming began in ancient China over 1,000 years ago with
+        shiitake mushrooms. In the 17th century, France pioneered cave-based
+        mushroom growing. In the U.S., it began in 1896 and expanded rapidly
+        with European influence and spawn technology.
+      </p>
+
+      <h3>Common Edible Mushrooms</h3>
+      <ul>
+        <li><strong>Agaricus bisporus:</strong> Includes white button, cremini, and portobello mushrooms.</li>
+        <li><strong>Pleurotus species:</strong> Oyster mushrooms – delicate flavor, easy to grow.</li>
+        <li><strong>Lentinula edodes:</strong> Shiitake – rich and savory, widely used in Asian cuisine.</li>
+        <li><strong>Morchella species:</strong> Morels – honeycomb texture, gourmet delicacy.</li>
+        <li><strong>Boletus edulis:</strong> Porcini – nutty flavor, loved in Italian dishes.</li>
+        <li><strong>Cantharellus cibarius:</strong> Chanterelles – yellow and fruity aroma.</li>
+        <li><strong>Tuber genus:</strong> Truffles – luxury ingredient with intense aroma.</li>
+      </ul>
+
+      <h3>🍽️ Culinary & Nutritional Benefits</h3>
+      <p>
+        Mushrooms are rich in vitamins and minerals, especially Vitamin D2 when
+        exposed to sunlight. They add savory umami flavor and can be roasted,
+        grilled, or added to soups and stews.
+      </p>
+
+      <h3>⚠️ Safety First</h3>
+      <p>
+        Correct identification is critical! Some edible and poisonous mushrooms
+        look alike. Always forage from clean environments and avoid old or
+        decayed mushrooms.
+      </p>
+
+      <h3>🍄 The Future of Mushroom Farming</h3>
+      <p>
+        Modern farms now explore robotics, AI, and eco-friendly materials to
+        grow mushrooms sustainably and efficiently — a leap from the humble
+        caves of France to smart farms of today.
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Mushroom Classification | Designed by Shashikala Londhe 🍄
+  </footer>
+</body>
+</html>
